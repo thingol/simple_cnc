@@ -1,12 +1,11 @@
 [uwsgi]
-chdir = /path/to/simple_cnc
+chdir = /path/to/app
 module = wsgi
+callable = app
 
 master = true
 processes = 5
 
-socket = /path/to/simple_cnc.sock
+socket = /path/to/app.sock
 chmod-socket = 660
 vacuum = true
-
-#die-on-term = true
