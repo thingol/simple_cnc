@@ -9,7 +9,7 @@ events = None
 
 def get_events(date):
     global events
-    
+
     if events == None:
         try:
             events_file = open("events.pickled", 'r')
@@ -27,7 +27,7 @@ def index():
     if request.args.has_key('date'):
         date = request.args.get('date')
     else:
-        date = datetime.now().date() + timedelta(days=1)
+        date = unicode(datetime.now().date() + timedelta(days=1))
         
     return render_template("index.html", events=get_events(date));
     
