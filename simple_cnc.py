@@ -29,8 +29,18 @@ def index():
     else:
         date = unicode(datetime.now().date() + timedelta(days=1))
         
-    return render_template("index.html", events=get_events(date));
-    
+    return render_template("index.html", events=get_events(date))
+
+@app.route('/test.html', methods=['GET'])
+def index_test():
+    date = None
+    if request.args.has_key('date'):
+        date = request.args.get('date')
+    else:
+        date = unicode(datetime.now().date() + timedelta(days=1))
+
+    return render_template("test.html", events=get_events(date))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

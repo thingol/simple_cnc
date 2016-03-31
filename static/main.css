@@ -1,0 +1,71 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#radio {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 299px;
+    height: 480px;
+
+    border: 0px;
+}
+
+
+#div_viktig {
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    width: 350px;
+    height: 230px;
+}
+
+.soeppel {
+    width: 50px;
+    height: 230px;
+}
+
+#papir {
+    position: absolute;
+    top: 0px;
+    left: 650px;
+}
+
+#papir.aktiv {
+    background-color: blue;
+}
+
+#gul_sekk {
+    position: absolute;
+    top: 0px;
+    left: 700px;
+}
+
+#gul_sekk.aktiv {
+    background-color: yellow;
+}
+
+#rest {
+    position: absolute;
+    top: 0px;
+    left: 750px;
+
+    width: 48px;
+    height: 228px;
+}
+
+#rest.aktiv {
+    background-color: grey;
+}
+#vaeret {
+    position: absolute;
+    top: 230px;
+    left: 300px;
+}
+
+#de_ru {
+    height: 249px;
+}
