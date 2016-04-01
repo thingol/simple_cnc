@@ -9,8 +9,8 @@ body {
     top: 0px;
     left: 0px;
 
-    width: 800px;
-    height: 480px;
+    width: 795px;
+    height: 477px;
 }
 
 iframe {
@@ -19,10 +19,10 @@ iframe {
     left: 0px;
 
     width: 299px;
-    height: 480px;
+    height: 477px;
 
-    border-width: 0px 1px 0px 0px;
-    border-color: black;
+    border: 0px;
+    border-right: 1px solid black;
 }
 
 
@@ -31,8 +31,8 @@ iframe {
     top: 0px;
     left: 450px;
 
-    width: 344px;
-    height: 230px;
+    width: 340px;
+    height: 227px;
 
     border-left: 1px solid black;
 
@@ -44,7 +44,7 @@ iframe {
     left: 300px;
 
     width: 150px;
-    height: 76px;
+    height: 75px;
 
     display: table;
 
@@ -58,7 +58,7 @@ iframe {
 
 #papir {
     top: 0px;
-    height: 77px;
+    height: 76px;
 }
 
 #papir.aktiv {
@@ -72,7 +72,7 @@ iframe {
 }
 
 #gul_sekk {
-    top: 77px;
+    top: 76px;
 
     border-top: 1px solid black;
 }
@@ -88,7 +88,7 @@ iframe {
 }
 
 #rest {
-    top: 153px;
+    top: 151px;
 
     border-top: 1px solid black;
 }
@@ -105,15 +105,15 @@ iframe {
 
 #vaeret {
     position: absolute;
-    top: 230px;
+    top: 227px;
     left: 300px;
 
-    width: 500px;
-    height: 249px;
+    width: 495px;
+    height: 247px;
 
     border-top: 1px solid black;
 }
 
 #de_ru {
-    height: 249px;
+    height: 247px;
 }
