@@ -3,7 +3,17 @@ body {
     padding: 0px;
 }
 
-#radio {
+
+#alt_innhold {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 800px;
+    height: 480px;
+}
+
+iframe {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -11,59 +21,97 @@ body {
     width: 299px;
     height: 480px;
 
-    border: 0px;
+    border-width: 0px 1px 0px 0px;
+    border-color: black;
 }
 
 
 #div_viktig {
     position: absolute;
     top: 0px;
-    left: 300px;
-    width: 350px;
+    left: 450px;
+
+    width: 344px;
     height: 230px;
+
+    border-left: 1px solid black;
+
+    padding-left: 5px;
 }
 
 .soeppel {
-    width: 50px;
-    height: 230px;
+    position: absolute;
+    left: 300px;
+
+    width: 150px;
+    height: 76px;
+
+    display: table;
+
+    text-align: center;
+}
+
+.soeppel p {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #papir {
-    position: absolute;
     top: 0px;
-    left: 650px;
+    height: 77px;
 }
 
 #papir.aktiv {
     background-color: blue;
+    color: white;
+}
+
+#papir.inaktiv {
+    background-color: white;
+    color: blue;
 }
 
 #gul_sekk {
-    position: absolute;
-    top: 0px;
-    left: 700px;
+    top: 77px;
+
+    border-top: 1px solid black;
 }
 
 #gul_sekk.aktiv {
     background-color: yellow;
+    color: grey;
+}
+
+#gul_sekk.inaktiv {
+    background-color: white;
+    color: rgb(255, 204, 0);
 }
 
 #rest {
-    position: absolute;
-    top: 0px;
-    left: 750px;
+    top: 153px;
 
-    width: 48px;
-    height: 228px;
+    border-top: 1px solid black;
 }
 
 #rest.aktiv {
     background-color: grey;
+    color: white;
 }
+
+#rest.inaktiv {
+    background-color: white;
+    color: grey;
+}
+
 #vaeret {
     position: absolute;
     top: 230px;
     left: 300px;
+
+    width: 500px;
+    height: 249px;
+
+    border-top: 1px solid black;
 }
 
 #de_ru {

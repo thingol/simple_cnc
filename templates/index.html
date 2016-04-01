@@ -10,32 +10,49 @@
   </head>
   
   <body>
+    <div id="alt_innhold">
 
-    <iframe id="radio" src="http://lar.local/radio/"></iframe>
+      <iframe id="radio" src="http://lar.local/radio/"></iframe>
 
-    <div id="div_viktig">
-      Diverse viktig
-    </div>
+      <div id="papir"
+           class="soeppel
+           {% if events.papir %}
+             aktiv
+           {% else %}
+             inaktiv
+           {% endif %}
+           ">
+        <p>Papir</p>
+      </div>
+      <div id="gul_sekk"
+           class="soeppel
+           {% if events.gul_sekk %}
+             aktiv
+           {% else %}
+             inaktiv
+           {% endif %}
+           ">
+        <p>Gul sekk</p>
+      </div>
+      <div id="rest"
+           class="soeppel
+           {% if events.rest %}
+             aktiv
+           {% else %}
+             inaktiv
+           {% endif %}
+           ">
+        <p>Restsøppel</p>
+      </div>
 
-    <div id="papir"
-         class="soeppel 
-         {% if events.papir %}
-           aktiv
-         {% endif %}
-         "></div>
-    <div id="gul_sekk"
-         {% if events.gul_sekk %}
-           class="aktiv"
-         {% endif %}
-         ></div>
-    <div id="rest"
-         {% if events.rest %}
-           class="aktiv"
-         {% endif %}
-         ></div>
 
-    <div id="vaeret">
-      <img id="de_ru" src="http://lar.local/weather_info/de_ru.png" />
+      <div id="div_viktig">
+        Diverse viktig
+      </div>
+
+      <div id="vaeret">
+        <img id="de_ru" src="http://lar.local/weather_info/de_ru.png" />
+      </div>
     </div>
       
   </body>
