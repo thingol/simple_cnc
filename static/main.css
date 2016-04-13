@@ -3,6 +3,12 @@ body {
     padding: 0px;
 }
 
+iframe {
+    position: absolute;
+    
+    border: 0px;
+}
+
 .big {
     position: absolute;
     top: 0px;
@@ -52,14 +58,12 @@ body {
 }
 
 #radio {
-    position: absolute;
     top: 0px;
     left: 0px;
 
     width: 299px;
     height: 480px;
 
-    border: 0px;
     border-right: 1px solid black;
 }
 
@@ -141,28 +145,14 @@ body {
     color: grey;
 }
 
-#vaeret {
-    position: absolute;
-    top: 227px;
-    left: 300px;
-
-    width: 495px;
-    height: 247px;
-
-    border-top: 1px solid black;
-}
-
 #de_ru_img {
-    position: absolute;
     top: 227px;
     left: 300px;
 
     width: 495px;
     height: 247px;
 
-    border: 0px;
     border-top: 1px solid black;
-
 }
 
 #de_ru {
