@@ -10,7 +10,14 @@
   </head>
   
   <body>
-    <div id="alt_innhold">
+    <div id="clock-screen" class="big">
+      <div id="clock">
+        <p id="display"></p>
+      </div>
+    </div>
+        
+    <div id="info-screen" class="big">
+      
 
       <iframe id="radio" src="http://lar.local/radio/"></iframe>
 
@@ -50,10 +57,11 @@
         Diverse viktig
       </div>
 
-      <div id="vaeret">
-        <img id="de_ru" src="http://lar.local/weather_info/de_ru.png" />
-      </div>
+<!--      <div id="vaeret"> -->
+        <iframe id="de_ru_img" src="http://localhost:8080/static/de_ru_png.html"></iframe>
+      <!-- </div> -->
     </div>
       
   </body>
+  <script src="static/clockDiv.js"></script>
 </html>
