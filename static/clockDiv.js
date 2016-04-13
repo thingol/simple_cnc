@@ -18,7 +18,6 @@ function padTimeunit(tunit) {
 }
 
 function updateClockDisplay() {
-    console.log('update: ' + intervalID);
     var currentTime = new Date();
     var timeString =
         padTimeunit(currentTime.getHours()) + ":" +
@@ -34,8 +33,6 @@ function primeClockScreen() {
     clockScreen.style.zIndex = -1;
 
     timeoutID = setTimeout(initClockScreen, timeoutLength);
-
-    console.log('click: ' + timeoutID);
 }
 
 function initClockScreen() {
@@ -43,6 +40,14 @@ function initClockScreen() {
     intervalID = setInterval(updateClockDisplay, intervalLength);
     clockScreen.style.zIndex = 1;
 }
+
+function reloadIfClockActive() {
+    if(clockScreen.style.zIndex == 1) {
+        location.reload();
+    } else {
+        primeClockScreen();
+    }
+}
     
 window.onload = primeClockScreen;
-window.onclick = primeClockScreen;
+window.onclick = prineClockScreen; //reloadIfClockActive;
