@@ -50,4 +50,4 @@ function reloadIfClockActive() {
 }
     
 window.onload = primeClockScreen;
-window.onclick = prineClockScreen; //reloadIfClockActive;
+window.onclick = primeClockScreen; //reloadIfClockActive;
