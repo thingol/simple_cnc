@@ -2,7 +2,7 @@
 from cPickle import load
 from datetime import datetime, timedelta
 
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 
 app = Flask("Simple C'n'C")
 events = None
@@ -21,15 +21,26 @@ def get_events(date):
     
     return {events.get(date, "nothing"): True}
 
+def tomorrow():
+    return unicode(datetime.now().date() + timedelta(days=1))
+
 @app.route('/', methods=['GET'])
 def index():
     date = None
     if request.args.has_key('date'):
         date = request.args.get('date')
     else:
-        date = unicode(datetime.now().date() + timedelta(days=1))
+        date = tomorrow()
         
     return render_template("index.html", events=get_events(date))
+
+@app.route('/waste', methods=['GET'])
+def waste():
+    return jsonify(get_events(tomorrow()))
+
+#
+# For testing purposes
+#
 
 @app.route('/test.html', methods=['GET'])
 def index_test():
