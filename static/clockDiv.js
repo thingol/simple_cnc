@@ -1,7 +1,8 @@
 "use strict";
 
-var timeoutLength = 120000;
+var timeoutLength = 2000; //120000;
 var intervalLength = 60000;
+var fullDayInMS = 1000*60*60*24;
 
 var timeoutID = -1;
 var intervalID = -1;
@@ -56,7 +57,7 @@ function checkWasteDisposal() {
             } else if(res.rest) {
                 clockScreen.style.backgroundColor = 'grey';
             } else {
-                clockScreen.style.backgroundColor = 'black';
+                clockScreen.style.backgroundColor = 'green';
             }
         }
     };
@@ -65,19 +66,47 @@ function checkWasteDisposal() {
     req.send();
 }
 
+function enableNightmode() {
+    clockScreen.style.backgroundColor = 'black';
+}
 
-window.onclick = primeClockScreen;
-window.onload = function () {
+function init() {
     primeClockScreen();
-    checkWasteDisposal();
 
     var time = new Date();
     var now_ms = time.getTime();
 
-    time.setHours(24); // after midnight next day
+    // don't display waste disposal info if night
+    // schedule night mode if applicable
+    if(time.getHours() < 22) {
+        if(time.getHours() > 5) {
+            checkWasteDisposal();
+        }
+        time.setHours(22);
+        setTimeout(enableNightmode, time.getTime() - now_ms);
+    }
 
+    // jump to six in the morning the next day
+    time.setDate(time.getDate()+1);
+    time.setHours(6);
+    time.setMinutes(0);
+
+    // schedule checking of waste disposal info
     setTimeout(function () {
         checkWasteDisposal();
-        setInterval(checkWasteDisposal, 1000*60*60*24); // 24 hours in ms
-    }, time.getTime() - now_ms + 2000);
+        setInterval(checkWasteDisposal, fullDayInMS);
+    }, time.getTime() - now_ms);
+
+    // jump to ten in the evening the next day
+    time.setHours(22);
+
+    // schedule "night mode", i.e. no bright colours
+    setTimeout(function () {
+        enableNightmode();
+        setInterval(enableNightmode, fullDayInMS);
+    }, time.getTime() - now_ms);
 }
+
+
+window.onclick = primeClockScreen;
+window.onload = init;
