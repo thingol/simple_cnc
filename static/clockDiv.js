@@ -56,8 +56,6 @@ function checkWasteDisposal() {
                 clockScreen.style.backgroundColor = 'blue';
             } else if(res.rest) {
                 clockScreen.style.backgroundColor = 'grey';
-            } else {
-                clockScreen.style.backgroundColor = 'green';
             }
         }
     };
