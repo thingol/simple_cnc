@@ -1,6 +1,6 @@
 "use strict";
 
-var timeoutLength = 2000; //120000;
+var timeoutLength =  30000;
 var intervalLength = 60000;
 var fullDayInMS = 1000*60*60*24;
 
@@ -66,6 +66,7 @@ function checkWasteDisposal() {
 
 function enableNightmode() {
     clockScreen.style.backgroundColor = 'black';
+    clockDisplay.style.color = 'grey';
 }
 
 function init() {
@@ -92,7 +93,10 @@ function init() {
     // schedule checking of waste disposal info
     setTimeout(function () {
         checkWasteDisposal();
-        setInterval(checkWasteDisposal, fullDayInMS);
+        setInterval(function () {
+            checkWasteDisposal();
+            clockDisplay.style.color = 'white';
+        }, fullDayInMS);
     }, time.getTime() - now_ms);
 
     // jump to ten in the evening the next day
