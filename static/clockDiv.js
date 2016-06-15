@@ -83,6 +83,8 @@ function init() {
         }
         time.setHours(22);
         setTimeout(enableNightmode, time.getTime() - now_ms);
+    } else {
+        enableNightmode();
     }
 
     // jump to six in the morning the next day
