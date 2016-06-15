@@ -66,7 +66,7 @@ function checkWasteDisposal() {
 
 function enableNightmode() {
     clockScreen.style.backgroundColor = 'black';
-    clockDisplay.style.color = 'grey';
+    clockDisplay.style.color = 'darkred';
 }
 
 function init() {
