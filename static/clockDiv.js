@@ -145,7 +145,7 @@ function init() {
 
     if (hours > 21 || hours < 6) {
         console.log('det er natt!');
-        enableNightMode();
+        enableNightmode();
     }
 
     scheduleDayNightModes();
