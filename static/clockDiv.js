@@ -65,51 +65,91 @@ function checkWasteDisposal() {
 }
 
 function enableNightmode() {
+    debugger;
     clockScreen.style.backgroundColor = 'black';
     clockDisplay.style.color = 'darkred';
 }
 
-function init() {
-    primeClockScreen();
+function enableDaymode() {
+    checkWasteDisposal();
+    clockDisplay.style.color = 'white';
 
+}
+
+function scheduleDayNightModes() {
     var time = new Date();
     var now_ms = time.getTime();
 
-    // don't display waste disposal info if night
-    // schedule night mode if applicable
-    if(time.getHours() < 22) {
-        if(time.getHours() > 5) {
-            checkWasteDisposal();
-        }
-        time.setHours(22);
-        setTimeout(enableNightmode, time.getTime() - now_ms);
-    } else {
-        enableNightmode();
-    }
+    var schedule = function (func, time) {
+        //console.log('scheduling\n' + func);
+        setTimeout(function () {
+            func();
+            setInterval(func, fullDayInMS);
+        }, time - now_ms);
+    };
 
-    // jump to six in the morning the next day
-    time.setDate(time.getDate()+1);
-    time.setHours(6);
+    var printTimeDebug = function () {
+        console.log('now_ms = ' + now_ms);
+        console.log('timeout = ' + time);
+        console.log('timeout = ' + time.getTime());
+        console.log('timeout = ' + ((time.getTime() - now_ms)) / 1000 / 60 / 60);
+    };
+
     time.setMinutes(0);
 
-    // schedule checking of waste disposal info
-    setTimeout(function () {
-        checkWasteDisposal();
-        setInterval(function () {
-            checkWasteDisposal();
-            clockDisplay.style.color = 'white';
-        }, fullDayInMS);
-    }, time.getTime() - now_ms);
+    if(time.getHours() < 6) {
+        // begge i dag
+        console.log('før 6');
 
-    // jump to ten in the evening the next day
-    time.setHours(22);
+        time.setHours(6);
+        printTimeDebug();
+        schedule(enableDaymode, time.getTime());
 
-    // schedule "night mode", i.e. no bright colours
-    setTimeout(function () {
-        enableNightmode();
-        setInterval(enableNightmode, fullDayInMS);
-    }, time.getTime() - now_ms);
-}
+        time.setHours(22);
+        printTimeDebug();
+        schedule(enableNightmode, time.getTime());
+    }
+    else if(time.getHours() > 5) {
+        // day mode i morgen
+        // night mode i dag
+        //console.log('mellom 6 og 22');
+
+        time.setHours(22);
+        //printTimeDebug();
+        schedule(enableNightmode, time.getTime());
+
+        time.setDate(time.getDate()+1);
+        time.setHours(6);
+        //printTimeDebug();
+        schedule(enableDaymode, time.getTime());
+
+    }
+    else {
+        // begge i morgen
+        //console.log('etter 22');
+        time.setDate(time.getDate()+1);
+        time.setHours(6);
+        //printTimeDebug();
+        schedule(enableDaymode, time.getTime());
+
+        time.setHours(22);
+        //printTimeDebug();
+        schedule(enableNightmode, time.getTime());
+    }
+};
+
+function init() {
+    primeClockScreen();
+
+    var hours = new Date().getHours();
+
+    if (hours > 21 || hours < 6) {
+        console.log('det er natt!');
+        enableNightMode();
+    }
+
+    scheduleDayNightModes();
+};
 
 
 window.onclick = primeClockScreen;
