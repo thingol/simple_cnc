@@ -97,11 +97,11 @@ function scheduleDayNightModes() {
 
     time.setMinutes(0);
 
-    if(time.getHours() < 6) {
+    if(time.getHours() < 7) {
         // begge i dag
-        console.log('før 6');
+        console.log('før 7');
 
-        time.setHours(6);
+        time.setHours(7);
         printTimeDebug();
         schedule(enableDaymode, time.getTime());
 
@@ -109,17 +109,17 @@ function scheduleDayNightModes() {
         printTimeDebug();
         schedule(enableNightmode, time.getTime());
     }
-    else if(time.getHours() > 5) {
+    else if(time.getHours() > 6) {
         // day mode i morgen
         // night mode i dag
-        //console.log('mellom 6 og 22');
+        //console.log('mellom 7 og 22');
 
         time.setHours(22);
         //printTimeDebug();
         schedule(enableNightmode, time.getTime());
 
         time.setDate(time.getDate()+1);
-        time.setHours(6);
+        time.setHours(7);
         //printTimeDebug();
         schedule(enableDaymode, time.getTime());
 
@@ -128,7 +128,7 @@ function scheduleDayNightModes() {
         // begge i morgen
         //console.log('etter 22');
         time.setDate(time.getDate()+1);
-        time.setHours(6);
+        time.setHours(7);
         //printTimeDebug();
         schedule(enableDaymode, time.getTime());
 
@@ -143,7 +143,7 @@ function init() {
 
     var hours = new Date().getHours();
 
-    if (hours > 21 || hours < 6) {
+    if (hours > 21 || hours < 7) {
         console.log('det er natt!');
         enableNightmode();
     } else {
